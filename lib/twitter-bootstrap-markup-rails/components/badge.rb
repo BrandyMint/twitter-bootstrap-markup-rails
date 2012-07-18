@@ -1,5 +1,5 @@
 module Twitter::Bootstrap::Markup::Rails::Components
-  class InlineLabel < Base
+  class Badge < Base
     attr_reader :message
 
     def initialize(message, options = {})
@@ -15,19 +15,16 @@ module Twitter::Bootstrap::Markup::Rails::Components
     private
     def default_options
       {
-        :class        => "label",
-        :type         => nil,
+        :class         => "badge",
+        :class_prefix => "badge-",
+        :type          => nil,
         :html_options => {}
       }
     end
 
     def build_class
-      classes = []
-
-      unless options[:class].blank?
-        classes << options[:class]
-        classes << "#{options[:class]}-#{options[:type]}" if options[:type]
-      end
+      classes = [options[:class]]
+      classes << "#{options[:class_prefix]}#{options[:type]}" if options[:type]
       classes.join(" ")
     end
 
