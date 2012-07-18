@@ -25,7 +25,7 @@ module Twitter::Bootstrap::Markup::Rails::Components
       klass = [ options[:class] ]
       klass << "#{options[:class_prefix]}#{options[:name]}" if options[:name]
       klass << " icon-white" unless options[:color].equal?(:black)
-      classes.join(" ")
+      klass.join(" ")
     end
 
     def build_tag_options
