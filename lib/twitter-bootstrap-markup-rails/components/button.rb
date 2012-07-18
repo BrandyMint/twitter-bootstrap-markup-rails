@@ -24,34 +24,34 @@ module Twitter::Bootstrap::Markup::Rails::Components
     def default_options
       {
         :class        => "btn",
-        :type         => [],
+        :bootstrap_class_prefix => "btn-",
+        :type         => nil,
+        :size         => nil,
         :disabled     => false,
-        :icon_white   => false,
         :dropdown     => false,
-        :id           => nil,
+        :id            => nil,
+        :icon_name    => nil,
+        :icon_color   => :black,
         :html_options => {}
       }
     end
 
     def build_class
-      classes = [options[:class]]
-
-      if options[:type].is_a?(Array)
-        classes = classes | options[:type].map { |c| c.to_s }
-      else
-        classes << options[:type]
-      end
-
+      classes = [ options[:class] ]
+      classes << "#{options[:bootstrap_class_prefix]}#{options[:type]}" if options[:type]
+      classes << "#{options[:bootstrap_class_prefix]}#{options[:size]}" if options[:size]
       classes << 'dropdown-toggle' if options[:dropdown]
       classes << 'disabled' if options[:disabled]
-
       classes.join(" ")
     end
 
     def build_icon
-      klass = options[:icon]
-      klass << ' icon-white' if options[:icon_white]
-      content_tag(:i, nil, :class => klass)
+      if (options[:icon_color].eql?(:white) || options[:type].blank?)
+        color = :white
+      else
+        color = options[:icon_color]
+      end
+      Icon.new(:name => options[:icon_name], :color => color).to_s
     end
 
     def build_caret

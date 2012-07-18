@@ -13,19 +13,19 @@ module Twitter::Bootstrap::Markup::Rails::Components
     private
     def default_options
       {
-        :class        => nil,
-        :class_prefix => "icon-",
-        :color        => :black,
-        :name         => nil,
+        :class         => nil,
+        :bootstrap_class_prefix => "icon-",
+        :color         => :black,
+        :name          => nil,
         :html_options => {}
       }
     end
 
     def build_class
-      klass = [ options[:class] ]
-      klass << "#{options[:class_prefix]}#{options[:name]}" if options[:name]
-      klass << " icon-white" unless options[:color].equal?(:black)
-      klass.join(" ")
+      classes = [ options[:class] ]
+      classes << "#{options[:bootstrap_class_prefix]}#{options[:name]}" if options[:name]
+      classes << "#{options[:bootstrap_class_prefix]}white"             unless options[:color].equal?(:black)
+      classes.join(" ")
     end
 
     def build_tag_options
