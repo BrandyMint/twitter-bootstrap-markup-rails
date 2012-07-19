@@ -46,7 +46,7 @@ module Twitter::Bootstrap::Markup::Rails::Components
     end
 
     def build_icon
-      if (options[:icon_white] || options[:type].blank?)
+      if (options[:icon_white] || options[:type].present?)
         options[:icon_white] = true
       end
       Icon.new(:name => options[:icon_name], :icon_white => options[:icon_white]).to_s

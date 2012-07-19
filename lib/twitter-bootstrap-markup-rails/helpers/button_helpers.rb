@@ -10,7 +10,7 @@ module Twitter::Bootstrap::Markup::Rails::Helpers
     #           :type         - Additional button type(s). For one, just specify a string, but
     #                           you can also pass an array (of sym or str) for multiple classes
     #           :disabled     - Will disable the button if set to true
-    #           :icon         - Specify an icon class from bootstrap to prepend
+    #           :icon_nanme   - Specify an icon name from bootstrap to prepend
     #           :icon_white   - Specify true if you want the icon to be white
     #           :id           - Assign an ID to the button
     #           :html_options - Any additional options you'd like to pass to the content_tag that will be created
@@ -18,7 +18,7 @@ module Twitter::Bootstrap::Markup::Rails::Helpers
     #
     # Examples
     #
-    #   bootstrap_button 'Search', '#', :type => 'btn-primary', :icon => 'icon-search'
+    #   bootstrap_button 'Search', '#', :type => 'primary', :icon => 'search'
     #
     def bootstrap_button(text, link, options = {})
       Twitter::Bootstrap::Markup::Rails::Components::Button.new(
@@ -62,7 +62,7 @@ module Twitter::Bootstrap::Markup::Rails::Helpers
     #           :type         - Additional button type(s). For one, just specify a string, but
     #                           you can also pass an array (of sym or str) for multiple classes
     #           :disabled     - Will disable the button if set to true
-    #           :icon         - Specify an icon class from bootstrap to prepend
+    #           :icon_nanme   - Specify an icon name from bootstrap to prepend
     #           :icon_white   - Specify true if you want the icon to be white
     #           :id           - Assign an ID to the button
     #           :html_options - Any additional options you'd like to pass to the content_tag that will be created
@@ -70,7 +70,7 @@ module Twitter::Bootstrap::Markup::Rails::Helpers
     #
     # Examples
     #
-    #   bootstrap_link_to 'Search', '#', :type => 'btn-primary', :icon => 'icon-search'
+    #   bootstrap_link_to 'Search', '#', :type => 'primary', :icon => 'search'
     #
     def bootstrap_link_to(text, link, options = {})
       options[:class] = nil
