@@ -81,6 +81,24 @@ module Twitter::Bootstrap::Markup::Rails::Helpers
       ).to_s
     end
 
+
+    def bootstrap_link_to_unless(condition, text, link, options = {}, &block)
+      if condition
+        if block_given?
+          block.arity <= 1 ? capture(text, &block) : capture(text, link, options, &block)
+        else
+          text
+        end
+      else
+        bootstrap_link_to(text, link, options)
+      end
+    end
+
+    def bootstrap_link_to_if(condition, text, link, options = {}, &block)
+      bootstrap_link_to_unless !condition, text, link, options, &block
+    end
+
+
   end
 end
 
