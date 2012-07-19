@@ -45,9 +45,11 @@ module Twitter::Bootstrap::Markup::Rails::Components
     end
 
     def build_icon
+=begin
       if (options[:icon][:color].eql?(:white) || options[:type].blank?)
         options[:icon] = { :color => :white }
       end
+=end
       Icon.new(options[:icon]).to_s
     end
 
