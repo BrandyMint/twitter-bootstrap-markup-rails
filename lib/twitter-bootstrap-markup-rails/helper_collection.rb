@@ -46,10 +46,12 @@ module Twitter::Bootstrap::Markup::Rails
       args << @options
 
       if @block
-        @view.send(@method, *args, &@block).html_safe
+        output = @view.send(@method, *args, &@block)
       else
-        @view.send(@method, *args).html_safe
+        output = @view.send(@method, *args)
       end
+
+      output.blank? ? nil : output.html
     end
 
   end
