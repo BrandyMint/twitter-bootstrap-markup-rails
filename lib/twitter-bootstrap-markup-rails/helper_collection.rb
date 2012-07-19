@@ -51,7 +51,7 @@ module Twitter::Bootstrap::Markup::Rails
         output = @view.send(@method, *args)
       end
 
-      output.blank? ? nil : output.html
+      output.blank? ? nil : output.html_safe
     end
 
   end
