@@ -12,7 +12,7 @@ module Twitter::Bootstrap::Markup::Rails::Components
 
     def to_s
       html_text = ""
-      html_text << build_icon.html_safe << ' ' if options[:icon].blank?
+      html_text << build_icon.html_safe << ' ' if options[:icon_name]
       html_text << text
       html_text << ' ' << build_caret.html_safe if options[:dropdown]
 
@@ -31,7 +31,7 @@ module Twitter::Bootstrap::Markup::Rails::Components
         :dropdown     => false,
         :id            => nil,
         :icon_name    => nil,
-        :icon_color   => :black,
+        :icon_white   => false,
         :html_options => {}
       }
     end
@@ -46,10 +46,10 @@ module Twitter::Bootstrap::Markup::Rails::Components
     end
 
     def build_icon
-      if (options[:icon][:color].eql?(:white) || options[:type].blank?)
-        options[:icon] = { :color => :white }
+      if (options[:icon_white] || options[:type].blank?)
+        options[:icon_white] = true
       end
-      Icon.new(:name => options[:icon_name], :color => options[:icon_color]).to_s
+      Icon.new(:name => options[:icon_name], :icon_white => options[:icon_white]).to_s
     end
 
     def build_caret
