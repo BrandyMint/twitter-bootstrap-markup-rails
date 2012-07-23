@@ -1,6 +1,7 @@
 module Twitter::Bootstrap::Markup::Rails::Components
   class Button < Base
     include ActionView::Helpers::UrlHelper
+    include ActionDispatch::Routing::UrlFor
 
     attr_reader :text
 
