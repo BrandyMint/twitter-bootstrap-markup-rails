@@ -30,7 +30,7 @@ module Twitter::Bootstrap::Markup::Rails::Components
     def build_html_class(element)
       html_class = {}
       if element.options[:active_nav]
-        element.options.reject! {|k,v| k == :active_nav }
+        element.options.reject! { |k| k == :active_nav }
         html_class = { :class => "active" }
       end
       html_class

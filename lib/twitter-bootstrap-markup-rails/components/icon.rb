@@ -14,7 +14,7 @@ module Twitter::Bootstrap::Markup::Rails::Components
     def default_options
       {
         :class         => nil,
-        :bootstrap_class_prefix => "icon-",
+        :bootstrap_class_prefix => "icon",
         :icon_white   => false,
         :name          => nil,
         :html_options => {}
@@ -23,8 +23,9 @@ module Twitter::Bootstrap::Markup::Rails::Components
 
     def build_class
       classes = [ options[:class] ]
-      classes << "#{options[:bootstrap_class_prefix]}#{options[:name]}" if options[:name]
-      classes << "#{options[:bootstrap_class_prefix]}white"             if options[:icon_white]
+      classes << options[:bootstrap_class_prefix]
+      classes << "#{options[:bootstrap_class_prefix]}-#{options[:name]}" if options[:name]
+      classes << "#{options[:bootstrap_class_prefix]}-white"             if options[:icon_white]
       classes.join(" ")
     end
 

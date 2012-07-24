@@ -18,14 +18,23 @@ module Twitter::Bootstrap::Markup::Rails::Components
 
     def default_options
       {
-        :class        => 'progress',
+        :class        => nil,
+        :bootstrap_class_prefix => "progress",
         :type         => [],
         :html_options => {}
       }
     end
 
+    def build_class
+      classes = [ options[:class] ]
+      classes << options[:bootstrap_class_prefix]
+      classes << "#{options[:bootstrap_class_prefix]}-#{options[:type]}" if options[:type]
+      classes << "active" if options[:active]
+      classes.join(" ")
+    end
+
     def build_bar_tag
-      ops = { :class => 'bar', :style => "width: #{width}%;" }
+      ops = { :class => 'bar', :style => "width: #{@width}%;" }
       content_tag(:div, nil, ops)
     end
 
@@ -34,18 +43,6 @@ module Twitter::Bootstrap::Markup::Rails::Components
       ops.reverse_merge(options[:html_options])
     end
 
-    def build_class
-      classes = [options[:class]]
 
-      if options[:type].is_a?(Array)
-        classes = classes | options[:type].map { |c| "progress-#{c.to_s}" }
-      else
-        classes << "progress-#{options[:type]}"
-      end
-
-      classes << "active" if options[:active]
-
-      classes.join(" ")
-    end
   end
 end

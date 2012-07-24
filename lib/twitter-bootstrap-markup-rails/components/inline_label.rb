@@ -13,10 +13,11 @@ module Twitter::Bootstrap::Markup::Rails::Components
     end
 
     private
+
     def default_options
       {
-        :class        => "label",
-        :bootstrap_class_prefix => "label-",
+        :class        => nil,
+        :bootstrap_class_prefix => "label",
         :type         => nil,
         :html_options => {}
       }
@@ -24,7 +25,8 @@ module Twitter::Bootstrap::Markup::Rails::Components
 
     def build_class
       classes = [ options[:class] ]
-      classes << "#{options[:bootstrap_class_prefix]}#{options[:type]}" if options[:type]
+      classes << options[:bootstrap_class_prefix]
+      classes << "#{options[:bootstrap_class_prefix]}-#{options[:type]}" if options[:type]
       classes.join(" ")
     end
 

@@ -1,7 +1,6 @@
 module Twitter::Bootstrap::Markup::Rails::Components
   class Button < Base
     include ActionView::Helpers::UrlHelper
-    include ActionDispatch::Routing::UrlFor
 
     attr_reader :text
 
@@ -24,8 +23,8 @@ module Twitter::Bootstrap::Markup::Rails::Components
     private
     def default_options
       {
-        :class        => "btn",
-        :bootstrap_class_prefix => "btn-",
+        :class        => nil,
+        :bootstrap_class_prefix => "btn",
         :type         => nil,
         :size         => nil,
         :disabled     => false,
@@ -39,8 +38,9 @@ module Twitter::Bootstrap::Markup::Rails::Components
 
     def build_class
       classes = [ options[:class] ]
-      classes << "#{options[:bootstrap_class_prefix]}#{options[:type]}" if options[:type]
-      classes << "#{options[:bootstrap_class_prefix]}#{options[:size]}" if options[:size]
+      classes << options[:bootstrap_class_prefix]
+      classes << "#{options[:bootstrap_class_prefix]}-#{options[:type]}" if options[:type]
+      classes << "#{options[:bootstrap_class_prefix]}-#{options[:size]}" if options[:size]
       classes << 'dropdown-toggle' if options[:dropdown]
       classes << 'disabled' if options[:disabled]
       classes.join(" ")

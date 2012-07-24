@@ -20,8 +20,13 @@ module Twitter::Bootstrap::Markup::Rails::Components
     end
 
     private
+
     def default_options
-      {:dom_id => 'twitter-bootstrap-modal', :fade => false, :header_title => ''}
+      {
+          :dom_id => 'twitter-bootstrap-modal',
+          :fade => false,
+          :header_title => ''
+      }
     end
 
     def modal_classes
