@@ -12,8 +12,8 @@ module Twitter::Bootstrap::Markup::Rails
         include Twitter::Bootstrap::Markup::Rails::Helpers::ButtonHelpers
         include Twitter::Bootstrap::Markup::Rails::Helpers::NavigationHelpers
         include Twitter::Bootstrap::Markup::Rails::Helpers::ModalHelpers
+        include Twitter::Bootstrap::Markup::Rails::Helpers::ProgressBarHelpers
       end
     end
   end
 end
-
