@@ -73,7 +73,7 @@ module Twitter::Bootstrap::Markup::Rails::Helpers
     #   bootstrap_link_to 'Search', '#', :type => 'primary', :icon => 'search'
     #
     def bootstrap_link_to(text, link, options = {})
-      options[:class] = nil
+      options[:bootstrap_class_prefix] = nil
       Twitter::Bootstrap::Markup::Rails::Components::Button.new(
           text,
           link,
