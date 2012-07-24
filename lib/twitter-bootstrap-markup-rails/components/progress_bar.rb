@@ -20,7 +20,9 @@ module Twitter::Bootstrap::Markup::Rails::Components
       {
         :class        => nil,
         :bootstrap_class_prefix => "progress",
-        :type         => [],
+        :striped      => false,
+        :animated     => false,
+        :type          => nil,
         :html_options => {}
       }
     end
@@ -29,7 +31,8 @@ module Twitter::Bootstrap::Markup::Rails::Components
       classes = [ options[:class] ]
       classes << options[:bootstrap_class_prefix]
       classes << "#{options[:bootstrap_class_prefix]}-#{options[:type]}" if options[:type]
-      classes << "active" if options[:active]
+      classes << "#{options[:bootstrap_class_prefix]}-striped" if options[:striped]
+      classes << "active" if options[:animated]
       classes.join(" ")
     end
 
