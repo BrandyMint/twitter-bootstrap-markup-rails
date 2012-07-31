@@ -178,6 +178,23 @@ end
 #     </ul>'
 ```
 
+### Navbar navigation (no type selected)
+
+```ruby
+bootstrap_navigation(:type => '') do |nav|
+  nav.link_to "Nav1", "/link1"
+  nav.link_to "Nav2", "/link2", :active_nav => true
+end
+# => '<ul class="nav">
+#       <li>
+#         <a href="/link1">Nav1</a>
+#       </li>
+#       <li class="active">
+#         <a href="/link2">Nav2</a>
+#       </li>
+#     </ul>'
+```
+
 ### Modal popup example
 
 ```ruby
